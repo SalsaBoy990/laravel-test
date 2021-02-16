@@ -7,7 +7,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="description" content="@yield('page_description', 'Tárold el saját receptjeidet egy alkalmazásban rendszerezve.')">
+
+    <title>@yield('page_title', 'Receptjeim')</title>
+    
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -33,7 +36,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li>
+                            <a class="nav-link{{ Request::is('/') ? ' active' : '' }}" href="/">Start</a>
+                        </li>
+                        <li>
+                            <a class="nav-link{{ Request::is('info') ? ' active' : '' }}" href="/info">Info</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

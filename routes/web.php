@@ -23,7 +23,9 @@ Route::get('/info', function () {
 });
 
 //Route::get('/test', [App\Http\Controllers\RecipeController::class, 'index'] );
-Route::get('/test/{name}/{age}', [App\Http\Controllers\RecipeController::class, 'index'] );
+//Route::get('/test/{name}/{age}', [App\Http\Controllers\RecipeController::class, 'index'] );
+
+Route::resource('/recipe', App\Http\Controllers\RecipeController::class);
 
 Auth::routes();
 

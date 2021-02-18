@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,11 @@ Route::get('/', function () {
 Route::get('/info', function () {
     return view('info');
 });
+
+//Route::get('/test', [App\Http\Controllers\RecipeController::class, 'index'] );
+//Route::get('/test/{name}/{age}', [App\Http\Controllers\RecipeController::class, 'index'] );
+
+Route::resource('/recipe', App\Http\Controllers\RecipeController::class);
 
 Auth::routes();
 

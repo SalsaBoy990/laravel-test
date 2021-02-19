@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class TagController extends Controller
 {
@@ -44,6 +45,7 @@ class TagController extends Controller
         $request->validate([
             'name' => 'required|string|min:3|max:60|unique:tags,name',
             'description' => 'sometimes|min:10|string|nullable',
+            'style' => 'required|string',
         ]);
 
         // létrehozás
@@ -51,6 +53,7 @@ class TagController extends Controller
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'slug' => Str::slug($request->input('name'), '-'),
+            'style' => $request->input('style'),
         ]);
 
         // mentés
@@ -70,6 +73,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
+        // ez nem is kell
         return view('tag.show')->with([
             'tag' => $tag
         ]);
@@ -99,8 +103,15 @@ class TagController extends Controller
     {
         // validáció
         $request->validate([
-            'name' => 'required|string|min:3|max:60|unique:tags,name',
+            'name' => [
+                'required', 
+                'string',
+                'min:3',
+                'max:60',
+                Rule::unique('tags', 'name')->ignore($tag->id),
+            ],
             'description' => 'sometimes|min:10|string|nullable',
+            'style' => 'sometimes|string',
         ]);
 
         // frissítés
@@ -108,6 +119,7 @@ class TagController extends Controller
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'slug' => Str::slug($request->input('name'), '-'),
+            'style' => $request->input('style'),
         ]);
 
 

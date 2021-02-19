@@ -18,5 +18,6 @@ class Tag extends Model
         'name',
         'slug',
         'description',
+        'style',
     ];
 }

@@ -25,7 +25,11 @@ Route::get('/info', function () {
 //Route::get('/test', [App\Http\Controllers\RecipeController::class, 'index'] );
 //Route::get('/test/{name}/{age}', [App\Http\Controllers\RecipeController::class, 'index'] );
 
+// Receptek CRUD
 Route::resource('/recipe', App\Http\Controllers\RecipeController::class);
+
+// Címkék CRUD
+Route::resource('/tag', App\Http\Controllers\TagController::class);
 
 Auth::routes();
 

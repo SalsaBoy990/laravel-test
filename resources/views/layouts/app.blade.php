@@ -43,7 +43,10 @@
                             <a class="nav-link{{ Request::is('info') ? ' active' : '' }}" href="/info">Info</a>
                         </li>
                         <li>
-                        <a class="nav-link{{ Request::is('recipe*') ? ' active' : '' }}" href="/recipe">Recipes</a>
+                            <a class="nav-link{{ Request::is('recipe*') ? ' active' : '' }}" href="/recipe">Recipes</a>
+                        </li>
+                        <li>
+                            <a class="nav-link{{ Request::is('tag*') ? ' active' : '' }}" href="/tag">Tags</a>
                         </li>
                     </ul>
 

@@ -10,7 +10,7 @@
           <ul class="list-group">
             @forelse($tags as $tag)
               <li class="list-group-element" style="padding: 5px;">
-                <a title="Show details" href="/tag/{{ $tag->id }}">{{ $tag->name }}</a>
+                <a title="Show details" href="/tag/{{ $tag->id }}" class="btn btn-sm btn-{{ $tag->style ?? 'secondary' }}">{{ $tag->name }}</a>
                 <a href="/tag/{{ $tag->id }}/edit" class="btn btn-sm btn-light ml-2"><i class="fas fa-edit"></i> Edit tag</a>
                 <form style="display: inline;" class="float-right" action="/tag/{{ $tag->id }}" method="post">
                   @csrf()

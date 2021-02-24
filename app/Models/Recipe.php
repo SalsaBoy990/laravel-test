@@ -9,6 +9,16 @@ class Recipe extends Model
 {
     use HasFactory;
 
+    // one user! not with 's'
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    // many to many
+    public function tags() {
+        return $this->belongsToMany(Tag::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

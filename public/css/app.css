@@ -7,11 +7,20 @@
 @charset "UTF-8";
 
 body {
-  background-color: azure !important;
+  background-color: ghostwhite !important;
 }
 
 a.nav-link.active {
   background: #ddd;
+}
+
+a.tag-btn {
+  font-size: 115%;
+}
+
+ul.list-group-no-bullets li {
+  list-style-type: none;
+  border-bottom: 1px solid #ddd;
 }
 
 /*!

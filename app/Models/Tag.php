@@ -9,6 +9,11 @@ class Tag extends Model
 {
     use HasFactory;
 
+    // many to many
+    public function recipes() {
+        return $this->belongsToMany(Recipe::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

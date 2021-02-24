@@ -22,7 +22,8 @@ class RecipeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->realText(50),
+            'description' => $this->faker->realText(),
         ];
     }
 }

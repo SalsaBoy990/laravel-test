@@ -17,8 +17,8 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -90,6 +90,14 @@
         </nav>
 
         <main class="py-4">
+            @if (Session::has('message_success'))
+            <div class="container">
+                <div class="alert alert-success" role="alert">
+                    {!! Session::get('message_success') !!}
+                </div>
+            </div>
+            @endif
+
             @isset($message_success)
             <div class="container">
                 <div class="alert alert-success" role="alert">

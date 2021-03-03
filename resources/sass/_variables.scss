@@ -2,8 +2,8 @@
 $body-bg: #f8fafc;
 
 // Typography
-// $font-family-sans-serif: 'Nunito', sans-serif;
-$font-size-base: 0.9rem;
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$font-size-base: 1rem;
 $line-height-base: 1.6;
 
 // Colors
@@ -17,3 +17,11 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+$gray-3: #333;
+$gray-6: #666;
+$gray-9: #999;
+
+$min-size: 10px;
+$small-size: 12px;
+$medium-size: 14px;

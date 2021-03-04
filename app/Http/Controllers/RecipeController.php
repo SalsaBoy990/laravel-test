@@ -6,6 +6,7 @@ use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Session;
 
 class RecipeController extends Controller
 {
@@ -62,8 +63,9 @@ class RecipeController extends Controller
             'user_id' => auth()->id(),
         ]);
         $recipe->save();
-        return redirect()->route('recipe.index')->with([
-            'message_success' => "The recipe <b>" . $recipe->name . "</b> was created."
+
+        return redirect('/recipe/' . $recipe->id)->with([
+            'message_warning' => "Please assign some tags now"
         ]);
     }
 
@@ -83,6 +85,8 @@ class RecipeController extends Controller
         return view('recipe.show')->with([
             'recipe' => $recipe,
             'availableTags' => $availableTags,
+            'message_success' => Session::get('message_success'),
+            'message_warning' => Session::get('message_warning')
         ]);
     }
 
@@ -95,7 +99,6 @@ class RecipeController extends Controller
     public function edit(Recipe $recipe)
     {
         // Route-model binding
-        // dd($recipe);
         return view('recipe.edit')->with([
             'recipe' => $recipe
         ]);

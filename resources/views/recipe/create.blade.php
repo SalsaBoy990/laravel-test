@@ -20,8 +20,8 @@
                                 <small class="form-text text-danger">{!! $errors->first('description') !!}</small>
                               </div>
                             <input class="btn btn-primary mt-4" type="submit" value="Save Recipe">
+                            <a class="btn btn-secondary mt-4 ml-2" href="/recipe">Cancel</a>
                         </form>
-                        <a class="btn btn-primary float-right" href="/recipe"><i class="fas fa-arrow-circle-up"></i> Back</a>
                     </div>
                 </div>
             </div>

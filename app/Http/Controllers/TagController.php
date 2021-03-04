@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -17,9 +18,8 @@ class TagController extends Controller
     public function index()
     {
         $tags = Tag::all();
-
         return view('tag.index')->with([
-            'tags' => $tags
+            'tags' => $tags,
         ]);
     }
 

@@ -5,27 +5,52 @@
   <div class="row justify-content-center">
     <div class="col-md-11">
       <div class="card">
-        <div class="card-header">{{ __('Recipes') }}</div>
+      @isset($filter)
+      <div class="card-header">{{ __('Filtered recipes by') }} <span class="badge badge-{{ $filter->style }}">{{ $filter->name }}</span>
+        <a href="/recipe" class="float-right medium">{{ __('Show all recipes') }}</a>
+      </div>
+      @else
+      <div class="card-header">{{ __('Recipes') }}</div>
+      @endisset
         <div class="card-body">
-          <ul class="list-group">
+          @auth
+          <div class="mt-1 mb-4">
+            <a class="btn btn-success btn-sm uppercase" href="/recipe/create"><i class="fas fa-plus-circle"></i>Create new Recipe</a>
+          </div>
+          @endauth
+          <ul class="list-group list-group-no-bullets">
             @foreach($recipes as $recipe)
-            <li class="list-group-element" style="padding: 5px;">
-              <a title="Show details" href="/recipe/{{ $recipe->id }}">{{ $recipe->name }}</a>
-              <a href="/recipe/{{ $recipe->id }}/edit" class="btn btn-sm btn-light ml-2"><i class="fas fa-edit"></i> Edit Recipe</a>
+            <li class="list-group-element mt-1" style="padding: 5px;">
+              <a title="Show details" class="recipe-title-link" style="font-weight: bold;" href="/recipe/{{ $recipe->id }}">{{ $recipe->name }}</a>
+              <br>
+              <span style="font-size: 12px; color: #666;">by: <a href="/user/{{ $recipe->user_id }}">{{ $recipe->user->name }}</a><span style="font-size: 10px; color: #666;"> ({{ $recipe->user->recipes->count() }} Recipes)</span></span></span>
+
+              @auth
               <form style="display: inline;" class="float-right" action="/recipe/{{ $recipe->id }}" method="post">
                 @csrf()
                 @method('DELETE')
-                <input onClick="confirm('Are you sure you want to delete {{ $recipe->name }}');" type="submit" value="Delete" class="btn btn-sm btn-outline-danger">
+                <button onClick="confirm('Are you sure you want to delete {{ $recipe->name }}');" type="submit" class="btn btn-sm btn-outline-danger uppercase">
+                 <i class="fas fa-trash"></i> Delete
+                </button>
+                <a href="/recipe/{{ $recipe->id }}/edit" class="btn btn-sm btn-light mr-2 uppercase"><i class="fas fa-edit"></i> Edit</a>
               </form>
+              @endauth
+              <br>
+              <span style="font-size: 12px; color: #999;">{{ $recipe->created_at->diffForHumans() }}</span>
+              <br>
+              @foreach ($recipe->tags as $tag)
+                <a href="/recipe/tag/{{ $tag->id }}"><span class="badge badge-{{ $tag->style }}">{{ $tag->name }}</span></a> 
+              @endforeach
             </li>
             @endforeach
           </ul>
         </div>
       </div>
 
-      <div class="mt-2">
-        <a class="btn btn-success btn-sm" href="/recipe/create"><i class="fas fa-plus-circle"></i>Create new Recipe</a>
+      <div class="mt-3">
+        {{ $recipes->links() }}
       </div>
+
     </div>
   </div>
 </div>

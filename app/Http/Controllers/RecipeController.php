@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use App\Models\Tag;
+use Illuminate\Support\Facades\Session;
 
 class RecipeController extends Controller
 {
+
+    // can only execute the show method
+    public function __construct() {
+        $this->middleware('auth')->except([ 'index', 'show']);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,9 +24,8 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
-        // dd( $name . " is " . $age . " years old" );
-        $recipes = Recipe::all();
+        // $recipes = Recipe::paginate( 10 );
+        $recipes = Recipe::orderBy('created_at', 'DESC')->paginate( 10 );
 
         //dd( $recipes );
         return view('recipe.index')->with([
@@ -48,15 +57,15 @@ class RecipeController extends Controller
             'description' => 'required|min:5',
         ]);
 
-        // dd('store');
-        // $request['name'];
         $recipe = new Recipe([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
+            'user_id' => auth()->id(),
         ]);
         $recipe->save();
-        return $this->index()->with([
-            'message_success' => "The recipe <b>" . $recipe->name . "</b> was created."
+
+        return redirect('/recipe/' . $recipe->id)->with([
+            'message_warning' => "Please assign some tags now"
         ]);
     }
 
@@ -68,8 +77,16 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
+        $allTags = Tag::all();
+        $usedTags = $recipe->tags;
+
+        $availableTags = $allTags->diff($usedTags);
+
         return view('recipe.show')->with([
-            'recipe' => $recipe
+            'recipe' => $recipe,
+            'availableTags' => $availableTags,
+            'message_success' => Session::get('message_success'),
+            'message_warning' => Session::get('message_warning')
         ]);
     }
 
@@ -82,7 +99,6 @@ class RecipeController extends Controller
     public function edit(Recipe $recipe)
     {
         // Route-model binding
-        // dd($recipe);
         return view('recipe.edit')->with([
             'recipe' => $recipe
         ]);
@@ -121,8 +137,8 @@ class RecipeController extends Controller
     {
         $oldName = $recipe->name;
         $recipe->delete();
-
-        return $this->index()->with([
+        
+        return redirect()->back()->with([
             'message_success' => "The recipe <b>" . $oldName . "</b> was deleted."
         ]);
     }

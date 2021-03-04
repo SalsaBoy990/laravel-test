@@ -1,15 +1,47 @@
 body {
-  background-color: ghostwhite !important;
+  background-color: $gray-100 !important;
 }
 a.nav-link.active {
   background: #ddd; 
 }
 
 a.tag-btn {
-  font-size: 115%;
+  font-size: 100%;
 }
 
 ul.list-group-no-bullets li {
   list-style-type: none;
   border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
 }
+
+li > a.recipe-title-link {
+  font-size: 130%;
+  color: $gray-3;
+}
+
+.min {
+  font-size: $min-size
+}
+.small {
+  font-size: $small-size
+}
+
+.medium {
+  font-size: $medium-size
+}
+
+.gray-3 {
+  color: $gray-3
+}
+.gray-6 {
+  color: $gray-6
+}
+.gray-9 {
+  color: $gray-9
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+

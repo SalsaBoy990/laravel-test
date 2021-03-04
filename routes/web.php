@@ -22,8 +22,6 @@ Route::get('/info', function () {
     return view('info');
 });
 
-//Route::get('/test', [App\Http\Controllers\RecipeController::class, 'index'] );
-//Route::get('/test/{name}/{age}', [App\Http\Controllers\RecipeController::class, 'index'] );
 
 // Receptek CRUD
 Route::resource('/recipe', App\Http\Controllers\RecipeController::class);
@@ -31,6 +29,16 @@ Route::resource('/recipe', App\Http\Controllers\RecipeController::class);
 // Címkék CRUD
 Route::resource('/tag', App\Http\Controllers\TagController::class);
 
+// Felhasználók CRUD
+Route::resource('/user', App\Http\Controllers\UserController::class);
+
+// Attach tags to recipes
+Route::get('/recipe/{recipe_id}/tag/{tag_id}/attach', [App\Http\Controllers\recipeTagController::class, 'attachTag']);
+Route::get('/recipe/{recipe_id}/tag/{tag_id}/detach', [App\Http\Controllers\recipeTagController::class, 'detachTag']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/recipe/tag/{tag_id}', [App\Http\Controllers\recipeTagController::class, 'getFilteredRecipes'])->name('recipe_tag');
+

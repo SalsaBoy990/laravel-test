@@ -14,6 +14,12 @@ class Tag extends Model
         return $this->belongsToMany(Recipe::class);
     }
 
+    public function filteredRecipes() {
+        return $this->belongsToMany(Recipe::class)
+            ->wherePivot('tag_id', $this->id)
+            ->orderBy('updated_at', 'DESC');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

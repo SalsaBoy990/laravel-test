@@ -1,8 +1,6 @@
-body {
-  background-color: $gray-100 !important;
-}
+
 a.nav-link.active {
-  background: #ddd; 
+  background: $gray-900; 
 }
 
 a.tag-btn {
@@ -11,13 +9,18 @@ a.tag-btn {
 
 ul.list-group-no-bullets li {
   list-style-type: none;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   margin-bottom: 20px;
 }
 
-li > a.recipe-title-link {
-  font-size: 130%;
-  color: $gray-3;
+.cart-header-page-title {
+  font-family: "Chau Philomene One", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: $gray-300 !important;
+}
+
+li > h2 > a.recipe-title-link {
+  color: $gray-900;
+  font-family: "Asap", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .min {
@@ -45,3 +48,27 @@ li > a.recipe-title-link {
   text-transform: uppercase;
 }
 
+.no-bullets > ul {
+  padding-left: 0;
+}
+.no-bullets > ul li {
+  list-style-type: none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Asap'
+}
+
+.bg-home-lightgray {
+  background-color: $gray-400;
+}
+
+
+footer nav.nav a.nav-link:hover,
+footer a.nav-link:active {
+  color: $white !important;
+  transition: cubic-bezier(0.39, 0.575, 0.565, 1)
+}
+
+/*
+#2A2635*/

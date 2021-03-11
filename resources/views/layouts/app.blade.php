@@ -24,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -47,9 +47,6 @@
                             <a class="nav-link{{ Request::is('/') ? ' active' : '' }}" href="/">Start</a>
                         </li>
                         @endguest
-                        <li>
-                            <a class="nav-link{{ Request::is('info') ? ' active' : '' }}" href="/info">Info</a>
-                        </li>
                         <li>
                             <a class="nav-link{{ Request::is('recipe*') ? ' active' : '' }}" href="/recipe">Recipes</a>
                         </li>
@@ -100,26 +97,26 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @isset($message_success)
-            <div class="container">
-                <div class="alert alert-success" role="alert">
+            <div class="container py-4">
+                <div class="alert alert-success no-bullets" role="alert">
                    {!! $message_success !!}
                 </div>
             </div>
             @endisset
 
             @isset($message_warning)
-            <div class="container">
-                <div class="alert alert-warning" role="alert">
+            <div class="container py-4">
+                <div class="alert alert-warning no-bullets" role="alert">
                    {!! $message_warning !!}
                 </div>
             </div>
             @endisset
 
             @if($errors->any())
-            <div class="container">
-                <div class="alert alert-danger" role="alert">
+            <div class="container py-4">
+                <div class="alert alert-danger no-bullets small" role="alert">
                     <ul class="mb-0">
                         @foreach($errors->all() as $error)
                         <li>{!! $error !!}</li>
@@ -130,6 +127,9 @@
             @endif
             @yield('content')
         </main>
+        <footer style="width: 100%" class="bg-primary mt-3">
+            @include('shared.footer')
+        </footer>
     </div>
 </body>
 </html>

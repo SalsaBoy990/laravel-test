@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container py-5">
   <div class="row justify-content-center">
-    <div class="col-md-11">
-      <div class="card">
-        <div class="card-header">{{ __('Recipe tags') }}</div>
+    <div class="col-md-12">
+      <div class="card shadow border-0">
+        <div class="card-header cart-header-page-title">{{ __('Recipe tags') }}</div>
         <div class="card-body">
           @auth
           <div class="mt-1 mb-5">
@@ -24,10 +24,10 @@
                 <form style="display: inline;" class="float-right" action="/tag/{{ $tag->id }}" method="post">
                   @csrf()
                   @method('DELETE')
-                  <button onClick="confirm('Are you sure you want to delete {{ $tag->name }}');" type="submit" class="btn btn-sm btn-outline-danger uppercase">
+                  <button onClick="confirm('Are you sure you want to delete {{ $tag->name }}');" type="submit" class="btn btn-sm btn-warning uppercase">
                     <i class="fas fa-trash"></i> Delete
                   </button>
-                    <a href="/tag/{{ $tag->id }}/edit" class="btn btn-sm btn-light ml-2"><i class="fas fa-edit"></i> Edit</a>
+                    <a href="/tag/{{ $tag->id }}/edit" class="btn btn-sm btn-info ml-2"><i class="fas fa-edit"></i> Edit</a>
                 </form>
                 @endauth
 

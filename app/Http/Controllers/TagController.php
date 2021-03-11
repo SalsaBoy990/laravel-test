@@ -30,7 +30,14 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('tag.create');
+        // összes egyedi stílus visszaadása
+        $tags = Tag::pluck('style')->all();
+     
+        return view('tag.create')->with(
+            [
+                'uniqueTags' => $tags
+            ]
+        );
     }
 
     /**
@@ -87,8 +94,12 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
+        // összes egyedi stílus visszaadása
+        $uniqueTags = Tag::pluck('style')->all();
+
         return view('tag.edit')->with([
-            'tag' => $tag
+            'tag' => $tag,
+            'uniqueTags' => $uniqueTags
         ]);
     }
 

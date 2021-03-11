@@ -14,6 +14,11 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'facebook_link' => env('APP_FACEBOOK', 'https:/facebook.com'),
+    'youtube_link' => env('APP_YOUTUBE', 'https:/youtube.com'),
+    'instagram_link' => env('APP_INSTAGRAM', 'https:/instagram.com'),
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -165,6 +170,8 @@ return [
         /*
          * Package Service Providers...
          */
+        // Intervetion Image
+        \Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -226,6 +233,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'Image' => \Intervention\Image\Facades\Image::class,
 
     ],
 

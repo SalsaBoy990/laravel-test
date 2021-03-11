@@ -1,268 +1,190 @@
-// Litera 4.6.0
+// Lux 4.6.0
 // Bootswatch
+
+
+// Variables ===================================================================
+
+$web-font-path: "https://fonts.googleapis.com/css2?family=Asap:wght@400;600&display=swap" !default;
+@import url($web-font-path);
 
 // Navbar ======================================================================
 
 .navbar {
   font-size: $font-size-sm;
+  text-transform: uppercase;
+  font-weight: 600;
 
-  &.bg-dark {
-    background-color: $success !important;
+  &-nav {
+    .nav-link {
+      padding-top: .715rem;
+      padding-bottom: .715rem;
+    }
   }
 
-  &.bg-light {
-    background-color: $white !important;
-    border: 1px solid rgba(0, 0, 0, .1);
-
-    &.navbar-fixed-top {
-      border-width: 0 0 1px;
-    }
-
-    &.navbar-fixed-bottom {
-      border-width: 1px 0 0;
-    }
+  &-brand {
+    margin-right: 2rem;
   }
 }
 
-// Typography ==================================================================
-
-p {
-  font-family: $font-family-serif;
+.bg-primary {
+  background-color: theme-color("primary") !important;
 }
 
-blockquote {
-  font-style: italic;
+.bg-light {
+  border: 1px solid rgba(0, 0, 0, .1);
+
+  &.navbar-fixed-top {
+    border-width: 0 0 1px;
+  }
+
+  &.navbar-bottom-top {
+    border-width: 1px 0 0;
+  }
 }
 
-footer {
+.nav-item {
+  margin-right: 2rem;
+}
+
+// Buttons =====================================================================
+
+.btn {
   font-size: $font-size-sm;
-}
+  text-transform: uppercase;
 
-.lead {
-  color: $gray-600;
-  font-family: $font-family-sans-serif;
-}
-
-// Tables ======================================================================
-
-table,
-.table {
-  font-size: $font-size-sm;
-
-  &-primary,
-  &-secondary,
-  &-success,
-  &-info,
-  &-warning,
-  &-danger {
-    color: $white;
-  }
-}
-
-.table {
-  &-primary {
-    &,
-    > th,
-    > td {
-      background-color: $primary;
-    }
-  }
-
-  &-secondary {
-    &,
-    > th,
-    > td {
-      background-color: $secondary;
-    }
-  }
-
-  &-light {
-    &,
-    > th,
-    > td {
-      background-color: $light;
-    }
-  }
-
-  &-dark {
-    &,
-    > th,
-    > td {
-      background-color: $dark;
-    }
-  }
-
-  &-success {
-    &,
-    > th,
-    > td {
-      background-color: $success;
-    }
-  }
-
-  &-info {
-    &,
-    > th,
-    > td {
-      background-color: $info;
-    }
-  }
-
-  &-danger {
-    &,
-    > th,
-    > td {
-      background-color: $danger;
-    }
+  &-sm {
+    font-size: 10px;
   }
 
   &-warning {
     &,
-    > th,
-    > td {
-      background-color: $warning;
+    &:hover,
+    &:not([disabled]):not(.disabled):active,
+    &:focus {
+      color: $white;
     }
   }
+}
 
-  &-active {
-    &,
-    > th,
-    > td {
-      background-color: $table-active-bg;
-    }
+.btn-outline-secondary {
+  border-color: $gray-600;
+  color: $gray-600;
+
+  &:not([disabled]):not(.disabled):hover,
+  &:not([disabled]):not(.disabled):focus,
+  &:not([disabled]):not(.disabled):active {
+    background-color: $gray-400;
+    border-color: $gray-400;
+    color: $white;
   }
 
-  &-hover {
-    .table-primary:hover {
-      &,
-      > th,
-      > td {
-        background-color: darken($primary, 5%);
-      }
-    }
+  &:not([disabled]):not(.disabled):focus {
+    box-shadow: 0 0 0 .2rem rgba($gray-400, .5);
+  }
+}
 
-    .table-secondary:hover {
-      &,
-      > th,
-      > td {
-        background-color: darken($secondary, 5%);
-      }
-    }
+[class*="btn-outline-"] {
+  border-width: 2px;
+}
 
-    .table-light:hover {
-      &,
-      > th,
-      > td {
-        background-color: darken($light, 5%);
-      }
-    }
+.border-secondary {
+  border: 1px solid $gray-400 !important;
+}
 
-    .table-dark:hover {
-      &,
-      > th,
-      > td {
-        background-color: darken($dark, 5%);
-      }
-    }
+// Typography ==================================================================
 
-    .table-success:hover {
-      &,
-      > th,
-      > td {
-        background-color: darken($success, 5%);
-      }
-    }
+body {
+  font-weight: 200;
+  letter-spacing: 1px;
+}
 
-    .table-info:hover {
-      &,
-      > th,
-      > td {
-        background-color: darken($info, 5%);
-      }
-    }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
 
-    .table-danger:hover {
-      &,
-      > th,
-      > td {
-        background-color: darken($danger, 5%);
-      }
-    }
+.text-secondary {
+  color: $body-color !important;
+}
 
-    .table-warning:hover {
-      &,
-      > th,
-      > td {
-        background-color: darken($warning, 5%);
-      }
-    }
+// Tables ======================================================================
 
-    .table-active:hover {
-      &,
-      > th,
-      > td {
-        background-color: $table-active-bg;
-      }
-    }
+th {
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+}
 
+.table {
+  th,
+  td {
+    padding: 1.5rem;
+  }
+
+  &-sm {
+    th,
+    td {
+      padding: .75rem;
+    }
+  }
+}
+
+// Forms =======================================================================
+
+.custom-switch {
+  .custom-control-label {
+    &::after {
+      top: add(.15625rem, 2px);
+      left: add(-2.25rem, 2px);
+      width: subtract(1rem, 4px);
+      height: subtract(1rem, 4px);
+    }
   }
 }
 
 // Navs ========================================================================
 
-.nav,
-.breadcrumb,
-.pagination {
-  font-size: $font-size-sm;
-}
-
 .dropdown-menu {
   font-size: $font-size-sm;
+  text-transform: none;
 }
 
 // Indicators ==================================================================
 
-.alert {
-  color: $white;
-  font-size: $font-size-sm;
-
-  &,
-  p {
-    font-family: $font-family-sans-serif;
-  }
-
-  a,
-  .alert-link {
-    color: $white;
-    font-weight: 400;
-    text-decoration: underline;
-  }
-
-  @each $color, $value in $theme-colors {
-    &-#{$color} {
-      @if $enable-gradients {
-        background: $value linear-gradient($value, mix($body-bg, $value, 15%)) repeat-x;
-      } @else {
-        background-color: $value;
-      }
-    }
-  }
-
-  &-light {
-    &,
-    a,
-    .alert-link {
-      color: $body-color;
-    }
-  }
-}
-
 .badge {
-  vertical-align: bottom;
+  padding-top: .28rem;
+
+  &-pill {
+    border-radius: 10rem;
+  }
 }
 
 // Containers ==================================================================
 
-.list-group {
-  font-size: $font-size-sm;
+.list-group-item {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    color: inherit;
+  }
+}
+
+.card {
+  &-title,
+  &-header {
+    color: inherit;
+  }
 }

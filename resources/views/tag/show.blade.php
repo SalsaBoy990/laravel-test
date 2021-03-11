@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container py-5">
   <div class="row justify-content-center">
-    <div class="col-md-11">
-      <div class="card">
-        <div class="card-header">{{ __('Tag Detail') }}</div>
+    <div class="col-md-12">
+      <div class="card shadow border-0">
+        <div class="card-header cart-header-page-title uppercase">{{ __('Tag Detail') }}</div>
         <div class="card-body">
           <h1>{{ $tag->name }}</h1>
           <p>{{ $tag->description }}</p>

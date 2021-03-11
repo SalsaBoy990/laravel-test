@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -33,6 +31,8 @@ class HomeController extends Controller
 
         return view('home')->with([
             'recipes' => $recipeBelongToAuthUser,
+            'message_success' => Session::get('message_success'),
+            'message_warning' => Session::get('message_warning')
         ]);
     }
 }

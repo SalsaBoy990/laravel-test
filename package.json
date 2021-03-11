@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.2",
+        "lightbox2": "^2.11.3",
         "vue-moments-ago": "^0.2.0"
     }
 }

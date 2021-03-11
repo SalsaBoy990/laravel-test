@@ -2382,11 +2382,112 @@ $('#image-upload').filestyle({
   text: ' Select file',
   buttonBefore: true
 });
-$('#profil-image').filestyle({
-  btnClass: 'btn-secondary',
-  htmlIcon: "fas fa-folder-open",
-  text: ' Select photo',
-  buttonBefore: true
+
+function imageInputCustomStyle() {
+  $('#user-profile-image').filestyle({
+    btnClass: 'btn-secondary',
+    htmlIcon: "fas fa-folder-open",
+    text: ' Select photo',
+    size: 'sm',
+    buttonBefore: true
+  });
+}
+
+imageInputCustomStyle(); // ###################################################
+
+/* A felhasználó mottójának módosítása */
+
+var userMottoEditBtn = $('#user-motto-edit');
+var userMottoSaveBtn = $('#user-motto-save');
+var userMottoCancelBtn = $('#user-motto-cancel');
+var userMottoPar = $('#user-motto');
+var userMottoInput = $('#user-motto-input');
+userMottoSaveBtn.hide();
+userMottoCancelBtn.hide();
+userMottoInput.hide(); // Ha a felhasználó a frissítés gombra kattint
+
+userMottoEditBtn.on('click', function () {
+  // Frissítés, Cancel gombok és a mottó mező megjelenítése
+  userMottoSaveBtn.show();
+  userMottoCancelBtn.show();
+  userMottoInput.show(); // A paragrafus és a szerkesztés gomb elrejtése
+
+  userMottoPar.hide();
+  userMottoEditBtn.hide();
+}); // Ha a felhasználó a frissítés gombra kattint
+
+userMottoCancelBtn.on('click', function () {
+  // Frissítés, Cancel gombok és a mottó mező elrejtése
+  userMottoSaveBtn.hide();
+  userMottoCancelBtn.hide();
+  userMottoInput.hide(); // A paragrafus és a szerkesztés gomb megjelenítése
+
+  userMottoPar.show();
+  userMottoEditBtn.show();
+}); // ###################################################
+
+/* A felhasználó magamról szövegének módosítása */
+
+var userAboutMeEditBtn = $('#user-about-me-edit');
+var userAboutMeSaveBtn = $('#user-about-me-save');
+var userAboutMeCancelBtn = $('#user-about-me-cancel');
+var userAboutMePar = $('#user-about-me-par');
+var userAboutMeTextarea = $('#user-about-me-textarea');
+userAboutMeSaveBtn.hide();
+userAboutMeCancelBtn.hide();
+userAboutMeTextarea.hide(); // Ha a felhasználó a frissítés gombra kattint
+
+userAboutMeEditBtn.on('click', function () {
+  // Frissítés, Cancel gombok és a mottó mező megjelenítése
+  userAboutMeSaveBtn.show();
+  userAboutMeCancelBtn.show();
+  userAboutMeTextarea.show(); // A paragrafus és a szerkesztés gomb elrejtése
+
+  userAboutMePar.hide();
+  userAboutMeEditBtn.hide();
+}); // Ha a felhasználó a frissítés gombra kattint
+
+userAboutMeCancelBtn.on('click', function () {
+  // Frissítés, Cancel gombok és a mottó mező elrejtése
+  userAboutMeSaveBtn.hide();
+  userAboutMeCancelBtn.hide();
+  userAboutMeTextarea.hide(); // A paragrafus és a szerkesztés gomb megjelenítése
+
+  userAboutMePar.show();
+  userAboutMeEditBtn.show();
+}); // ###################################################
+
+/* A felhasználó magamról szövegének módosítása */
+
+var userImageEditBtn = $('#user-image-edit');
+var userImageSaveBtn = $('#user-image-save');
+var userImageCancelBtn = $('#user-image-cancel');
+var userImagePar = $('#user-image-par');
+var userImageInput = $('#user-image-input');
+userImageSaveBtn.hide();
+userImageCancelBtn.hide();
+userImageInput.hide(); // Ha a felhasználó a frissítés gombra kattint
+
+userImageEditBtn.on('click', function () {
+  imageInputCustomStyle(); // Frissítés, Cancel gombok és a mottó mező megjelenítése
+
+  userImageSaveBtn.show();
+  userImageCancelBtn.show();
+  userImageInput.css('max-width', '300px');
+  userImageInput.show(); // A paragrafus és a szerkesztés gomb elrejtése
+
+  userImagePar.hide();
+  userImageEditBtn.hide();
+}); // Ha a felhasználó a frissítés gombra kattint
+
+userImageCancelBtn.on('click', function () {
+  // Frissítés, Cancel gombok és a mottó mező elrejtése
+  userImageSaveBtn.hide();
+  userImageCancelBtn.hide();
+  userImageInput.hide(); // A paragrafus és a szerkesztés gomb megjelenítése
+
+  userImagePar.show();
+  userImageEditBtn.show();
 });
 
 /***/ }),

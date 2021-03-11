@@ -90,6 +90,16 @@ footer a.nav-link:active {
 /*
 #2A2635*/
 
+div#user-image-input > .bootstrap-filestyle.input-group input {
+  height: 30.4px !important;
+}
+
+@media screen and (max-width: 991px) {
+  .bootstrap-filestyle.input-group {
+    background-color: white !important;
+  }
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

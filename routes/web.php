@@ -18,9 +18,24 @@ Route::get('/', function () {
     return view('starting_page');
 });
 
-Route::get('/info', function () {
-    return view('info');
+Route::get('/adatkezelesi-tajekoztato', function () {
+    return view('adatkezeles');
 });
+
+Route::get('/gyakran-ismetelt-kerdesek', function () {
+    return view('gyik');
+});
+
+// Delete images of recipes
+Route::delete('/delete-images/recipe/{recipe_id}', [App\Http\Controllers\RecipeController::class, 'deleteImages']);
+
+// Upload/update profile images of users
+Route::post('/upload-images/user/{user_id}', [App\Http\Controllers\UserController::class, 'updateProfileImage']);
+
+
+// Modify user properties for logged in users
+Route::put('/update-motto/user/{user_id}', [App\Http\Controllers\UserController::class, 'modifyUserMotto']);
+Route::put('/update-about-me/user/{user_id}', [App\Http\Controllers\UserController::class, 'modifyUserAboutMeText']);
 
 
 // Receptek CRUD
